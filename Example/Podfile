@@ -1,0 +1,19 @@
+source 'https://github.com/QinKingHan/BX_Podspec_Repo.git'   # 私有库
+source 'https://github.com/CocoaPods/Specs.git'  # 官方库
+
+use_frameworks!
+use_modular_headers!
+
+platform :ios, '8.0'
+
+target 'TiKuBaseModulesRepo_Example' do
+  pod 'TiKuBaseModulesRepo', :path => '../'
+
+  target 'TiKuBaseModulesRepo_Tests' do
+    inherit! :search_paths
+
+#    pod 'FBSnapshotTestCase'
+    pod 'SDWebImage'
+    pod 'BaseClassModulesRepo', '~> 0.1.2'
+  end
+end
