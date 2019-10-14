@@ -6,7 +6,7 @@
  `source 'https://github.com/CocoaPods/Specs.git'  # 官方库`
  `source 'https://github.com/QinKingHan/BX_Podspec_Repo.git'   # 私有库`
  
- `pod 'TiKuBaseModulesRepo', '~> 0.3.0'`
+ `pod 'TiKuBaseModulesRepo', '~> 0.3.1'`
   
 
 最后 pod install
