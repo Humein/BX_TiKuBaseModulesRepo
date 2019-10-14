@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TiKuBaseModulesRepo'
-  s.version          = '0.3.0'
+  s.version          = '0.3.1'
   s.summary          = 'TiKuBaseModulesRepo'
 
 # This description is used to generate tags and improve search results.
@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
   s.libraries = 'xml2'
   s.xcconfig = { 'HEADER_SEARCH_PATHS' => "$(SDKROOT)/usr/include/libxml2" }
   
-  s.dependency "BaseClassModulesRepo", '~> 0.1.4'
+  s.dependency "BaseClassModulesRepo", '~> 0.1.5'
   s.dependency "SDWebImage"
 
 
