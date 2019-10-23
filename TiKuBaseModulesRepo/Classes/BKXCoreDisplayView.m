@@ -119,27 +119,32 @@ typedef enum CTDisplayViewState : NSInteger {
     
     // 绘制图片
     for (BKXCoreTextImageData * imageData in self.data.imageArray) {
-        UIImage *image = [UIImage imageNamed:imageData.name];
-        SDImageCache * cache = [SDImageCache sharedImageCache];
-        if (imageData.name.length > 0) {
-            image = [cache imageFromDiskCacheForKey:imageData.name];
-                // 适配lj后台
-                if ([imageData.name containsString:@"base64"]) {
-                    image = imageData.baseImage;
-                }
-                if (image) {
-                    CGContextDrawImage(context, imageData.imagePosition, image.CGImage);
-                }else{
-                    if (imageData.isDownloading == NO) {
-                        
-                        [self refreshImage:imageData.name imageData:imageData];
+            UIImage *image = [UIImage imageNamed:imageData.name];
+            SDImageCache * cache = [SDImageCache sharedImageCache];
+            if (imageData.name.length > 0) {
+                image = [cache imageFromDiskCacheForKey:imageData.name];
+                    // 适配lj后台
+                    if ([imageData.name containsString:@"base64"]) {
+                        NSArray *imageArray = [imageData.name  componentsSeparatedByString:@","];
+                        NSData *imagebase = [[NSData alloc] initWithBase64EncodedString:imageArray[1] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+                        image = [UIImage imageWithData:imagebase];
+    //                    image = imageData.baseImage;
                     }
+                    if (image) {
+                        CGContextDrawImage(context, imageData.imagePosition, image.CGImage);
+                    }else{
+                        if (imageData.isDownloading == NO) {
+                            [self refreshImage:imageData.name imageData:imageData];
+                        }
+                }
             }
         }
-    }
 }
 
 -(void)refreshImage:(NSString*)imageUrls imageData:(BKXCoreTextImageData *)imageData{
+    if ([imageData.name containsString:@"base64"]) {
+        return;
+    }
     SDImageCache *cache = [SDImageCache sharedImageCache];
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     NSString *urlStr = [imageUrls stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]; // 转译一些特殊字符
