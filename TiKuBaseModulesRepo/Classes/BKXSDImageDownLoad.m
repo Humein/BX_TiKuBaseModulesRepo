@@ -12,7 +12,7 @@
  *  批量下载图片资源
  *  imageURLs 图片地址数组 成员为String类型
  */
-+ (void)downloadImagesWithURLs:(NSArray <NSString *> *)imageURLs {
++ (void)downloadImagesWithURLs:(NSArray <NSString *> *)imageURLs completed:(ImagePrefetcherCompletionBlock)completionBlock{
     NSMutableArray *prefetchURLs = [NSMutableArray new];
     
     for (NSString *urlStr in imageURLs) {
@@ -22,7 +22,9 @@
         }
     }
     
-    [[SDWebImagePrefetcher sharedImagePrefetcher] prefetchURLs:prefetchURLs];
+    [[SDWebImagePrefetcher sharedImagePrefetcher] prefetchURLs:prefetchURLs progress:nil completed:^(NSUInteger noOfFinishedUrls, NSUInteger noOfSkippedUrls) {
+        completionBlock(noOfFinishedUrls,noOfSkippedUrls);
+    }];
 }
 
 /*

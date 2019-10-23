@@ -12,7 +12,8 @@
 #import "BKXCoreTextLinkData.h"
 #import "BKXCoreTextUtils.h"
 #import "BKXSDImageDownLoad.h"
-
+#import "SDImageCache.h"
+#import "SDWebImageManager.h"
 NSString *const CTDisplayViewImagePressedNotification = @"CTDisplayViewImagePressedNotification";
 NSString *const CTDisplayViewLinkPressedNotification = @"CTDisplayViewLinkPressedNotification";
 
@@ -117,25 +118,75 @@ typedef enum CTDisplayViewState : NSInteger {
     }
     
     // 绘制图片
-    for (BKXCoreTextImageData * imageData in self.data.imageArray) {                            
-            imageData.canChange = NO;
-            if (imageData.name.length > 0) {
-                [BKXSDImageDownLoad downloadImagesWithURLs:@[imageData.name]];
-                UIImage *image = [BKXSDImageDownLoad imageForURL:imageData.name];
+    for (BKXCoreTextImageData * imageData in self.data.imageArray) {
+        UIImage *image = [UIImage imageNamed:imageData.name];
+        SDImageCache * cache = [SDImageCache sharedImageCache];
+        if (imageData.name.length > 0) {
+            image = [cache imageFromDiskCacheForKey:imageData.name];
                 // 适配lj后台
                 if ([imageData.name containsString:@"base64"]) {
                     image = imageData.baseImage;
                 }
                 if (image) {
                     CGContextDrawImage(context, imageData.imagePosition, image.CGImage);
-                    [self setNeedsDisplay];
                 }else{
-                    [BKXSDImageDownLoad downloadImagesWithURLs:@[imageData.name]];
-                }
+                    if (imageData.isDownloading == NO) {
+                        
+                        [self refreshImage:imageData.name imageData:imageData];
+                    }
             }
         }
+    }
 }
 
+-(void)refreshImage:(NSString*)imageUrls imageData:(BKXCoreTextImageData *)imageData{
+    SDImageCache *cache = [SDImageCache sharedImageCache];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    NSString *urlStr = [imageUrls stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]; // 转译一些特殊字符
+    NSURL *url = [NSURL URLWithString:urlStr];
+    [cache diskImageExistsWithKey:urlStr completion:^(BOOL isInCache) {
+        __weak BKXCoreDisplayView *view=self;
+            if (!isInCache)
+            {
+                imageData.isDownloading = YES;
+                __block int i=0;
+                __weak typeof(self) weakSelf = self;
+                [manager loadImageWithURL:url options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+                    
+                } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+                    if(!error){
+                        if (i<view.data.imageArray.count) {
+                            for (int t=0; t<view.data.imageArray.count; t++) {
+                                if ([imageURL.absoluteString isEqualToString:[imageURL absoluteString]] ) {
+                                    i++;
+                                }
+                            }
+                        }
+                    }else{
+                        if (weakSelf.requestCount<3) {
+                            if(imageURL.absoluteString){
+                                weakSelf.requestCount++;
+                        NSLog(@"有网络，正在第%ld次重试图片下载。%@",(long)weakSelf.requestCount,imageURL.absoluteString);
+
+                                [weakSelf refreshImage:imageURL.absoluteString imageData:imageData];
+                            }
+                        }else{
+                            weakSelf.requestCount = 0;
+                        }
+                    }
+                    imageData.isDownloading = NO;
+                    imageData.name = urlStr;  // 使用转译后的url
+                    [view setNeedsDisplay];
+                }];
+            }else{
+                imageData.isDownloading = NO;
+                imageData.name = urlStr;
+                [view setNeedsDisplay];
+            }
+    }];
+    
+    
+}
 
 /**
  *  单击手势
