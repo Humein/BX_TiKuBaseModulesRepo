@@ -117,23 +117,22 @@ typedef enum CTDisplayViewState : NSInteger {
     }
     
     // 绘制图片
-    for (BKXCoreTextImageData * imageData in self.data.imageArray) {
-            // 这个类和业务耦合太多 blankPlaceholder 等类型可以定义全局的
+    for (BKXCoreTextImageData * imageData in self.data.imageArray) {                            
             imageData.canChange = NO;
-//            if (imageData.name.length > 0) {
-//                [BKXSDImageDownLoad downloadImagesWithURLs:@[imageData.name]];
-//                UIImage *image = [BKXSDImageDownLoad imageForURL:imageData.name];
-//                // 适配lj后台
-//                if ([imageData.name containsString:@"base64"]) {
-//                    image = imageData.baseImage;
-//                }
-//                if (image) {
-//                    CGContextDrawImage(context, imageData.imagePosition, image.CGImage);
-//                    [self setNeedsDisplay];
-//                }else{
-//                    [BKXSDImageDownLoad downloadImagesWithURLs:@[imageData.name]];
-//                }
-//            }
+            if (imageData.name.length > 0) {
+                [BKXSDImageDownLoad downloadImagesWithURLs:@[imageData.name]];
+                UIImage *image = [BKXSDImageDownLoad imageForURL:imageData.name];
+                // 适配lj后台
+                if ([imageData.name containsString:@"base64"]) {
+                    image = imageData.baseImage;
+                }
+                if (image) {
+                    CGContextDrawImage(context, imageData.imagePosition, image.CGImage);
+                    [self setNeedsDisplay];
+                }else{
+                    [BKXSDImageDownLoad downloadImagesWithURLs:@[imageData.name]];
+                }
+            }
         }
 }
 

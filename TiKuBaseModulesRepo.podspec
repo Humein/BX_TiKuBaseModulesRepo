@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TiKuBaseModulesRepo'
-  s.version          = '0.3.1'
+  s.version          = '0.3.2'
   s.summary          = 'TiKuBaseModulesRepo'
 
 # This description is used to generate tags and improve search results.
@@ -24,11 +24,11 @@ Pod::Spec.new do |s|
   
                        DESC
 
-  s.homepage         = 'https://github.com/QinKingHan/BX_TiKuBaseModulesRepo.git'
+  s.homepage         = 'https://github.com/JeeneDo/BX_TiKuBaseModulesRepo.git'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Zhang Xin Xin' => 'shou1wang@gmail.com' }
-  s.source           = { :git => 'https://github.com/QinKingHan/BX_TiKuBaseModulesRepo.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/JeeneDo/BX_TiKuBaseModulesRepo.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   s.swift_version = '4.0'
   s.ios.deployment_target = '8.0'
@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
   s.libraries = 'xml2'
   s.xcconfig = { 'HEADER_SEARCH_PATHS' => "$(SDKROOT)/usr/include/libxml2" }
   
-  s.dependency "BaseClassModulesRepo", '~> 0.1.5'
+  s.dependency "BaseClassModulesRepo", '~> 0.1.6'
   s.dependency "SDWebImage"
 
 
