@@ -1,0 +1,36 @@
+PODS:
+  - BaseClassModulesRepo (0.1.6):
+    - Masonry
+  - Masonry (1.1.0)
+  - SDWebImage (5.9.5):
+    - SDWebImage/Core (= 5.9.5)
+  - SDWebImage/Core (5.9.5)
+  - TiKuBaseModulesRepo (0.3.5):
+    - BaseClassModulesRepo (~> 0.1.6)
+    - SDWebImage
+
+DEPENDENCIES:
+  - BaseClassModulesRepo (~> 0.1.6)
+  - SDWebImage
+  - TiKuBaseModulesRepo (from `../`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Masonry
+    - SDWebImage
+  https://github.com/Humein/BX_Podspec_Repo.git:
+    - BaseClassModulesRepo
+
+EXTERNAL SOURCES:
+  TiKuBaseModulesRepo:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  BaseClassModulesRepo: b63fef0b2b58af40e9c63325f8a324b996e2e49d
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
+  TiKuBaseModulesRepo: fdf01f95e2c6c4d268a8ffa25aa62409bdf48b31
+
+PODFILE CHECKSUM: 83f39bb4bef6bf4f5d2faadc4423a30c39c2e418
+
+COCOAPODS: 1.10.0

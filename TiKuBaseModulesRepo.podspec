@@ -33,10 +33,11 @@ Pod::Spec.new do |s|
   s.swift_version = '4.0'
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'TiKuBaseModulesRepo/Classes/**/*'
+  s.source_files = 'TiKuBaseModulesRepo/Classes/**/*.{h,m,swift}'
+  s.resources = 'TiKuBaseModulesRepo/Resource/XesAppOrder.bundle'
   s.libraries = 'xml2'
   s.xcconfig = { 'HEADER_SEARCH_PATHS' => "$(SDKROOT)/usr/include/libxml2" }
-  
+  s.pod_target_xcconfig = { "DEFINES_MODULE" => "YES" }
   s.dependency "BaseClassModulesRepo", '~> 0.1.6'
   s.dependency "SDWebImage"
 

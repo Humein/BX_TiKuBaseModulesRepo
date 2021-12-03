@@ -1,0 +1,40 @@
+{
+  "name": "TiKuBaseModulesRepo",
+  "version": "0.3.5",
+  "summary": "TiKuBaseModulesRepo",
+  "description": "0.2.3 --- 基础类\n0.2.8 --- +基础类\n0.2.9 --- +控件基础类",
+  "homepage": "https://github.com/Humein/BX_TiKuBaseModulesRepo.git",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Zhang Xin Xin": "shou1wang@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Humein/BX_TiKuBaseModulesRepo.git",
+    "tag": "0.3.5"
+  },
+  "swift_versions": "4.0",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "TiKuBaseModulesRepo/Classes/**/*.{h,m,swift}",
+  "resources": "TiKuBaseModulesRepo/Resource/XesAppOrder.bundle",
+  "libraries": "xml2",
+  "xcconfig": {
+    "HEADER_SEARCH_PATHS": "$(SDKROOT)/usr/include/libxml2"
+  },
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES"
+  },
+  "dependencies": {
+    "BaseClassModulesRepo": [
+      "~> 0.1.6"
+    ],
+    "SDWebImage": [
+
+    ]
+  },
+  "swift_version": "4.0"
+}

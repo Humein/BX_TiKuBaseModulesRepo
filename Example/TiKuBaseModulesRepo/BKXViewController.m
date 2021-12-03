@@ -7,8 +7,7 @@
 //
 
 #import "BKXViewController.h"
-#import "BKXTiKuHeader.h"
-
+@import TiKuBaseModulesRepo;
 @interface BKXViewController ()
 @property (nonatomic, strong) BKXCoreDisplayView *textView;
 @end

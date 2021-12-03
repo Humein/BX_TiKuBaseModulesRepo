@@ -1,0 +1,6 @@
+module TiKuBaseModulesRepo {
+  umbrella header "TiKuBaseModulesRepo-umbrella.h"
+
+  export *
+  module * { export * }
+}

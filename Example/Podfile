@@ -1,8 +1,9 @@
-source 'https://github.com/JeeneDo/BX_Podspec_Repo.git'   # 私有库
+source 'https://github.com/Humein/BX_Podspec_Repo.git'   # 私有库
 source 'https://github.com/CocoaPods/Specs.git'  # 官方库
 
-use_frameworks!
+#use_frameworks!
 use_modular_headers!
+inhibit_all_warnings!
 
 platform :ios, '8.0'
 

@@ -1,0 +1,6 @@
+module Pods_TiKuBaseModulesRepo_Example {
+  umbrella header "Pods-TiKuBaseModulesRepo_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

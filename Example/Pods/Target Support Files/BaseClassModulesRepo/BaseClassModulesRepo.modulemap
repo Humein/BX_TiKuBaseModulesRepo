@@ -1,0 +1,6 @@
+module BaseClassModulesRepo {
+  umbrella header "BaseClassModulesRepo-umbrella.h"
+
+  export *
+  module * { export * }
+}
