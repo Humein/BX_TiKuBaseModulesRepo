@@ -8,6 +8,8 @@
 
 #import "BKXViewController.h"
 @import TiKuBaseModulesRepo;
+#import "TiKuBaseModulesRepo_Example-Swift.h"
+
 @interface BKXViewController ()
 @property (nonatomic, strong) BKXCoreDisplayView *textView;
 @end
