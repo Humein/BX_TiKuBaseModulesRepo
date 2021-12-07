@@ -1,0 +1,105 @@
+{
+  "name": "XesAppSocial",
+  "version": "1.0.6",
+  "summary": "分享功能管理器",
+  "description": "分享功能管理，第三方相关工具功能管理，统一的出入口。",
+  "homepage": "https://git.100tal.com/peiyou_xueersiapp_XesAppModuleiOS/xesappsocialcode",
+  "license": "",
+  "authors": {
+    "weidongfang": "weidongfang1@tal.com"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://git.100tal.com/peiyou_xueersiapp_XesAppModuleiOS/xesappsocialcode.git",
+    "tag": "1.0.6"
+  },
+  "frameworks": "Photos",
+  "resources": [
+    "XesAppSocial/Resources/*.bundle"
+  ],
+  "default_subspecs": [
+    "QQ",
+    "WeChat",
+    "Login"
+  ],
+  "requires_arc": true,
+  "static_framework": true,
+  "pod_target_xcconfig": {
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64"
+  },
+  "user_target_xcconfig": {
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64"
+  },
+  "subspecs": [
+    {
+      "name": "Core",
+      "source_files": [
+        "XesAppSocial/*.{h,m}",
+        "XesAppSocial/Share/ShareUI/*.{h,m}",
+        "XesAppSocial/Share/*.{h,m}",
+        "XesAppSocial/Core/*.{h,m}"
+      ],
+      "dependencies": {
+        "Masonry": [
+
+        ],
+        "XesAppCategory": [
+
+        ]
+      },
+      "platforms": {
+        "ios": "9.0"
+      }
+    },
+    {
+      "name": "QQ",
+      "source_files": "XesAppSocial/Core/QQ/*.{h,m}",
+      "dependencies": {
+        "TencentOpenAPI-Mirror": [
+
+        ],
+        "XesAppSocial/Core": [
+
+        ]
+      }
+    },
+    {
+      "name": "WeChat",
+      "source_files": "XesAppSocial/Core/WeChat/*.{h,m}",
+      "dependencies": {
+        "WechatOpenSDK_NoPay-Mirror": [
+
+        ],
+        "XesAppSocial/Core": [
+
+        ]
+      }
+    },
+    {
+      "name": "WeWork",
+      "source_files": "XesAppSocial/Core/WeWork/*.{h,m}",
+      "dependencies": {
+        "WeworkOpenSDK-Mirror": [
+
+        ],
+        "XesAppSocial/Core": [
+
+        ]
+      }
+    },
+    {
+      "name": "Login",
+      "source_files": "XesAppSocial/Login/*.{h,m}",
+      "dependencies": {
+        "XesAppSocial/WeChat": [
+
+        ],
+        "XesAppSocial/Core": [
+
+        ]
+      }
+    }
+  ]
+}

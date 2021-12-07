@@ -6,6 +6,8 @@
 //
 
 import Foundation
-public func testSwift() {
-    print("======")
+class TikuBaseSwift: UIViewController {
+    public func testSwift() {
+        print("======")
+    }
 }

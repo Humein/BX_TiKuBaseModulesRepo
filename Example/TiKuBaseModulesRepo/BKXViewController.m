@@ -8,8 +8,8 @@
 
 #import "BKXViewController.h"
 @import TiKuBaseModulesRepo;
-#import "TiKuBaseModulesRepo_Example-Swift.h"
-
+@import BaseClassModulesRepo;
+#import "TiKuBaseModulesRepo_Example-Swift.h" // 壳工程内部使用
 @interface BKXViewController ()
 @property (nonatomic, strong) BKXCoreDisplayView *textView;
 @end
@@ -18,6 +18,10 @@
 
 - (void)viewDidLoad
 {
+    
+    [BaseSwift new];
+    
+    
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.textView.backgroundColor = [UIColor yellowColor];
@@ -33,7 +37,6 @@
     self.textView = [[BKXCoreDisplayView alloc] initWithFrame:CGRectMake(10,300, 300, data.height)];
     self.textView.data = data;
     [self.view addSubview:self.textView];
-    
     
 }
 

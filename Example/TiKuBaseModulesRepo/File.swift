@@ -8,10 +8,14 @@
 
 import Foundation
 import TiKuBaseModulesRepo
-
+import BaseClassModulesRepo
 class TestView: UIView {
     func test() {
         BKXBaseExerciseViewController()
+        BKXPlaceHolderView().loadDataFromDelegate()
+        XXBaseSwift()
+        BaseSwift()
+//        TikuBaseSwift() private
     }
 }
 

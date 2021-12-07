@@ -1,11 +1,37 @@
 source 'https://github.com/Humein/BX_Podspec_Repo.git'   # 私有库
 source 'https://github.com/CocoaPods/Specs.git'  # 官方库
 
+#学而思spec依赖 - 公共使用
+source 'https://git.100tal.com/peiyou_xueersiapp_XesApp/specRepo_iOS.git'
+#好未来公有库地址
+source 'https://git.100tal.com/tal_internal_pods/talinternalpodrepo.git'
+#XESRouter组件spec依赖 - 中台使用
+source 'https://git.100tal.com/peiyou_mobile_bclib/xes_bclib_ios_privatepods.git'
+#云学习spec依赖 - 中台+云学习使用
+source 'https://git.100tal.com/peiyou_xueersiapp_cloudlearning/xes_cloudlearning_ios_privatepods.git'
+#WCRLiveCore直播组件spec依赖 - 在线+学而思使用
+#source 'https://git.100tal.com/jituan_zhiboyun_opensource/wcrspecs.git'
+source 'https://git.100tal.com/peiyou_zaixian_zhibo_public/WCRSpecs.git'
+#阿里云spec依赖 - 学而思使用
+source 'https://github.com/aliyun/aliyun-specs.git'
+#集团SDK-TALAccSDK组件spec依赖 - 学而思使用
+source 'https://git.100tal.com/tal_ucenter_sdk/ios_spec.git'
+#语音评测
+source 'https://git.100tal.com/jituan_AI_SDK/talaiplatformvoiceevalsdkpodrepo.git'
+#source 'https://github.com/CocoaPods/Specs.git'
+#source 'https://cdn.cocoapods.org/‘
+
+source 'https://git.100tal.com/peiyou_xueersiapp_XesAppModuleiOS/XesAppRepo.git'
+
+#在线spec依赖
+source 'https://git.100tal.com/peiyou_online_app/xes_cloudlearning_online_ios_privatepods.git'
+source 'https://git.100tal.com/jituan_AI_SDK/talaiplatformvoiceevalsdkpodrepo.git'
+
 #use_frameworks!
 use_modular_headers!
 inhibit_all_warnings!
 
-platform :ios, '8.0'
+platform :ios, '9.0'
 
 target 'TiKuBaseModulesRepo_Example' do
   pod 'TiKuBaseModulesRepo', :path => '../'
@@ -13,9 +39,16 @@ target 'TiKuBaseModulesRepo_Example' do
   target 'TiKuBaseModulesRepo_Tests' do
     inherit! :search_paths
 
-#    pod 'FBSnapshotTestCase'
     pod 'SDWebImage'
-    pod 'BaseClassModulesRepo', '~> 0.1.6'
+#    pod 'BaseClassModulesRepo', '~> 0.1.6'
+
+
+# 通过本地源码
+    pod 'BaseClassModulesRepo', :path => '../../BKX_BaseClassModule/BaseClassModulesRepo.podspec'
+    
+#    pod 'XesAppSocial', :path => '../../XesAppSocialCode/XesAppSocial.podspec' #验证.a
+
+    
   end
   
   

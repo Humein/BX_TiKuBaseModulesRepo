@@ -1,4 +1,4 @@
-framework module Pods_TiKuBaseModulesRepo_Tests {
+module Pods_TiKuBaseModulesRepo_Tests {
   umbrella header "Pods-TiKuBaseModulesRepo_Tests-umbrella.h"
 
   export *

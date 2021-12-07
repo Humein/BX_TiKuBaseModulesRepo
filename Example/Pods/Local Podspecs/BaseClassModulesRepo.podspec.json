@@ -1,0 +1,30 @@
+{
+  "name": "BaseClassModulesRepo",
+  "version": "0.1.6",
+  "summary": "BaseClassModulesRepo",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Humein/BKX_BaseClassModule.git",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Zhang Xin Xin": "shou1wang@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Humein/BKX_BaseClassModule.git",
+    "tag": "0.1.6"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "BaseClassModulesRepo/Classes/**/*",
+  "dependencies": {
+    "Masonry": [
+
+    ]
+  },
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES"
+  }
+}
